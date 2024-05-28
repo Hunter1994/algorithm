@@ -1,0 +1,33 @@
+{
+  "culture": "zh-Hans",
+  "texts": {
+    "Menu:Home": "首页",
+    "Welcome": "欢迎",
+    "LongWelcomeMessage": "欢迎使用本应用程序。这是一个基于 ABP 框架的启动项目。更多信息，请访问 abp.io。",
+    "Menu:BookStore": "图书馆",
+    "Menu:Books": "图书列表",
+    "Enum:BookType:0": "未定义",
+    "Enum:BookType:1": "冒险",
+    "Enum:BookType:2": "传记",
+    "Enum:BookType:3": "反乌托邦",
+    "Enum:BookType:4": "奇幻",
+    "Enum:BookType:5": "恐怖",
+    "Enum:BookType:6": "科学",
+    "Enum:BookType:7": "科幻",
+    "Enum:BookType:8": "诗歌",
+    "Permission:BookStore": "图书馆",
+    "Permission:Books": "图书管理",
+    "Permission:Books.Create": "新增图书",
+    "Permission:Books.Edit": "编辑图书",
+    "Permission:Books.Delete": "删除图书",
+    "Permission:Authors": "作者管理",
+    "Permission:Authors.Create": "创建新作者",
+    "Permission:Authors.Edit": "编辑作者",
+    "Permission:Authors.Delete": "删除作者",
+    "Menu:Authors": "作者",
+    "Authors": "作者",
+    "AuthorDeletionConfirmationMessage": "确定要删除作者 '{0}' 吗？",
+    "BirthDate": "出生日期",
+    "NewAuthor": "新作者"
+  }
+}

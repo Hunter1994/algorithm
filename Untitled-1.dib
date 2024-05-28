@@ -1,0 +1,146 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"csharp","items":[{"aliases":[],"languageName":"csharp","name":"csharp"}]}}
+
+#!csharp
+
+var str1="mitcmu";
+var str2="mtacnu";
+var state=new int[str1.Length][];
+for(int i=0;i<str1.Length;i++)
+{
+    state[i]=new int[str2.Length];
+}
+for(int i=0;i<str2.Length;i++)
+{
+    if(str1[0]==str2[i])state[0][i]=1;
+    else if(i>0)state[0][i]=state[0][i-1]+1;
+    else state[0][i]=0;
+}
+for(int i=0;i<str1.Length;i++)
+{
+    if(str1[i]==str2[0])state[i][0]=1;
+    else if(i>0)state[i][0]=state[i-1][0]+1;
+    else state[i][0]=0;
+}
+
+
+for(int i=1;i<str1.Length;i++)
+{
+    for(int j=1;j<str2.Length;j++)
+    {
+        if(str1[i]==str2[j])
+        {
+           state[i][j]= max(state[i][j-1],state[i-1][j],state[i-1][j-1]+1);
+        }
+        else
+        {
+            state[i][j]= max(state[i][j-1],state[i-1][j],state[i-1][j-1]);
+        }
+    }
+}
+
+Console.WriteLine(state[str2.Length-1][str2.Length-1]);
+for(int i=0;i<str1.Length;i++)
+{
+    for(int j=0;j<str2.Length;j++)
+    {
+        Console.Write($"{state[i][j],2}");
+    }
+    Console.WriteLine();
+}
+
+int max(int i,int j,int k)
+{
+    int v=int.MinValue;
+    if(i>v)v=i;
+    if(j>v)v=j;
+    if(k>v)v=k;
+    return v;
+}
+
+#!csharp
+
+var str1="mitcmu";
+var str2="mtacnu";
+var state=new int[str1.Length][];
+for(int i=0;i<str1.Length;i++)
+{
+    state[i]=new int[str2.Length];
+}
+for(int i=0;i<str2.Length;i++)
+{
+    if(str1[0]==str2[i])state[0][i]=i;
+    else if(i>0)state[0][i]=state[0][i-1]+1;
+    else state[0][i]=1;
+}
+for(int i=0;i<str1.Length;i++)
+{
+    if(str1[i]==str2[0])state[i][0]=i;
+    else if(i>0)state[i][0]=state[i-1][0]+1;
+    else state[i][0]=1;
+}
+
+
+for(int i=1;i<str1.Length;i++)
+{
+    for(int j=1;j<str2.Length;j++)
+    {
+        if(str1[i]==str2[j])
+        {
+           state[i][j]= min(state[i][j-1]+1,state[i-1][j]+1,state[i-1][j-1]);
+        }
+        else
+        {
+            state[i][j]= min(state[i][j-1]+1,state[i-1][j]+1,state[i-1][j-1]+1);
+        }
+    }
+}
+
+Console.WriteLine(state[str2.Length-1][str2.Length-1]);
+for(int i=0;i<str1.Length;i++)
+{
+    for(int j=0;j<str2.Length;j++)
+    {
+        Console.Write($"{state[i][j],2}");
+    }
+    Console.WriteLine();
+}
+
+int min(int i,int j,int k)
+{
+    int v=int.MaxValue;
+    if(i<v)v=i;
+    if(j<v)v=j;
+    if(k<v)v=k;
+    return v;
+}
+
+#!csharp
+
+var str1="mitcmu";
+var str2="mtacnu";
+int n1=str1.Length;
+int n2=str2.Length;
+int res=int.MaxValue;
+f(0,0,0);
+Console.WriteLine(res);
+void f(int i,int j,int v)
+{
+    if(i==n1||j==n2)
+    {
+        if(i<n1)v+=(n1-i);
+        if(j<n2)v+=(n2-j);
+        if(v<res)res=v;
+        return;
+    }
+    if(str1[i]==str2[j])
+    {
+        f(i+1,j+1,v);
+    }
+    else{
+        f(i+1,j,v+1);
+        f(i,j+1,v+1);
+        f(i+1,j+1,v+1);
+    }
+}

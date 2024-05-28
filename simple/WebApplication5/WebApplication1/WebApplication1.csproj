@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <InvariantGlobalization>true</InvariantGlobalization>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.4" />
+    <PackageReference Include="Serilog.AspNetCore" Version="8.0.1" />
+    <PackageReference Include="Serilog.Sinks.Async" Version="1.5.0" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc" Version="8.1.1" />
+    <PackageReference Include="Volo.Abp.Autofac" Version="8.1.1" />
+    <PackageReference Include="Volo.Abp.Core" Version="8.1.1" />
+    <PackageReference Include="Volo.Abp.Swashbuckle" Version="8.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DemoApplicationContracts\DemoApplicationContracts.csproj" />
+    <ProjectReference Include="..\DemoApplication\DemoApplication.csproj" />
+  </ItemGroup>
+
+</Project>
