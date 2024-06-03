@@ -1,0 +1,4 @@
+# For more info on HTTP files go to https://aka.ms/vs/httpfile
+GET https://localhost:7281/project/get1
+
+Authorization bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiNDU2QHFxLmNvbSIsImV4cCI6MTc0Mjg5MjI0NiwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzI4MSIsImF1ZCI6Ik91c3VfWGxkX1BsYXRmb3JtIn0.GYPLKGGp_x55APaZzW6oqMAMVXruirsTfNZCaeCePMM

@@ -65,13 +65,26 @@ app.UseAuthorization();
 app.MapControllers();
 app.MapIdentityApi<IdentityUser>();
 
-app.MapGet("/a", async Task ([FromServices] IServiceProvider sp) => {
+app.MapGet("/a", async Task ([FromServices] IServiceProvider sp,HttpContext context) => {
     var signIn = sp.GetService<SignInManager<IdentityUser>>();
 
-    var p = new AuthenticationProperties();
-    p.Items.Add(new KeyValuePair<string, string?>("a", "a"));
-    await signIn.SignInAsync(new IdentityUser() { UserName = "1" }, p);
-
+    //var p = new AuthenticationProperties();
+    //p.Items.Add(new KeyValuePair<string, string?>("a", "a"));
+    
+    //await signIn.SignInAsync(new IdentityUser() { UserName = "1" }, p);
+    var claimsFactory = sp.GetRequiredService<IUserClaimsPrincipalFactory<IdentityUser>>();
+    var userPrincipal = await claimsFactory.CreateAsync(new IdentityUser() { UserName = "111@qq.com", Id = "1" });
+    var additionalClaims = new Claim[] { new Claim("amr", "pwd") };
+    foreach (var claim in additionalClaims)
+    {
+        userPrincipal.Identities.First().AddClaim(claim);
+    }
+    // await context.SignInAsync(IdentityConstants.BearerScheme,
+    //userPrincipal,
+    //   new AuthenticationProperties());
+    await context.SignInAsync(JwtBearerDefaults.AuthenticationScheme,
+   userPrincipal,
+      new AuthenticationProperties());
 });
 app.MapGet("/b", async Task<string> ([FromServices] IServiceProvider sp,HttpContext context) => {
     var auth = await context.AuthenticateAsync();
