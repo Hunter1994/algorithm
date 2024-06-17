@@ -1,0 +1,17 @@
+﻿@page
+@using Microsoft.AspNetCore.Antiforgery
+@model PrivacyModel
+@inject IAntiforgery antiforgery;
+@{
+    ViewData["Title"] = "Privacy Policy";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Use this page to detail your site's privacy policy.</p>
+<form method="post">
+
+    <input type="submit" />
+</form>
+<br />
+@antiforgery.GetAndStoreTokens(HttpContext).RequestToken;
+

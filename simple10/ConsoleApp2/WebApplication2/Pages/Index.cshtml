@@ -1,0 +1,28 @@
+﻿@page
+@using System.Text.Encodings.Web
+@using System.Net
+@model IndexModel
+@inject UrlEncoder UrlEncoder
+@inject JavaScriptEncoder JavaScriptEncoder
+
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+<p>This link text is in Chinese: @Html.ActionLink(UrlEncoder.Encode("汉语/漢語"), "Index")</p>
+<p>@JavaScriptEncoder.Encode("<script>alter('123')</script>")</p>
+<p>@WebUtility.HtmlDecode("\u003Cscript\u003Ealter(\u0027123\u0027)\u003C/script\u003E")</p>
+
+<p>@UrlEncoder.Encode("<script>alter('123')</script>")</p>
+<p>@WebUtility.UrlDecode("%3Cscript%3Ealter(%27123%27)%3C%2Fscript%3E")</p>
+
+<p>@HtmlEncoder.Encode("<script>alter('123')</script>")</p>
+<p>@WebUtility.HtmlDecode("&lt;script&gt;alter(&#x27;123&#x27;)&lt;/script&gt;")</p>
+
+<p>@HttpContext.User.Identity.Name</p>
+
+
