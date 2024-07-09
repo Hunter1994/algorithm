@@ -1,0 +1,6 @@
+@StringLocalizerDemo_HostAddress = http://localhost:5254
+
+GET {{StringLocalizerDemo_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,2 @@
+﻿msgid "UserName"
+msgstr "UserName"
