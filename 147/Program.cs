@@ -1,7 +1,9 @@
 ﻿Solution solution = new();
-
-var res = solution.MinimumMoves([1, 0, 1, 0, 1], 2, 0);
 // var res = solution.MinimumMoves([1, 1, 0, 0, 0, 1, 1, 0, 0, 1], 3, 1);
+// var res = solution.MinimumMoves([1, 0, 1, 0, 0, 0, 0, 1], 3, 0);
+// var res = solution.MinimumMoves([1, 0, 1, 0, 1], 2, 0);
+// var res = solution.MinimumMoves([1, 1, 0, 0, 0, 1, 1, 0, 0, 1], 3, 1);
+var res = solution.MinimumMoves([1, 1], 1, 2);
 System.Console.WriteLine(res);
 public class Solution
 {
@@ -50,7 +52,8 @@ public class Solution
                 i1++;
             }
             long count1 = sum[i + 1] - sum[i1], count2 = sum[i2 + 1] - sum[i + 1];
-            res = Math.Min(res, indexSum[i2 + 1] - indexSum[i + 1] - i * count2 + i * count1 - (indexSum[i + 1] - indexSum[i1]) + 2 * maxChanges);
+            var data = indexSum[i2 + 1] - indexSum[i + 1] - i * count2 + i * count1 - (indexSum[i + 1] - indexSum[i1]) + 2 * maxChanges;
+            res = Math.Min(res, data);
         }
         return res;
     }
